@@ -4,15 +4,20 @@
     let list: any[] = [];
     let showList: any[] = [];
     let itemHeight: number = 50;
+    let itemMargin: number = 10;
     let listHeight: number = 0;
     let marginTop: number = 0;
+    let h1Height: number = 39;
+    let h1Margin: number = 40;
 
     function renderItems() {
         let maxItems = Math.round(
-            (window.innerHeight - (39 + 40)) / (itemHeight + 10) + 1
+            (window.innerHeight - (h1Height + h1Margin)) /
+                (itemHeight + itemMargin) +
+                1
         );
         let top = window.scrollY;
-        let startItem = Math.floor(top / (itemHeight + 10));
+        let startItem = Math.floor(top / (itemHeight + itemMargin));
         let endItem = startItem + maxItems;
 
         marginTop = window.scrollY;
@@ -27,7 +32,7 @@
 
         renderItems();
 
-        listHeight = (itemHeight + 10) * list.length;
+        listHeight = (itemHeight + itemMargin) * list.length;
 
         if (typeof window !== "undefined") {
             window.addEventListener("scroll", renderItems);
@@ -47,7 +52,8 @@
         style="height: {listHeight -
             marginTop +
             itemHeight +
-            itemHeight}px; margin-top: {marginTop - itemHeight - 10}px"
+            itemHeight}px; margin-top: {marginTop -
+            (itemHeight + itemMargin)}px"
     >
         {#each showList as listItem, i}
             <div
