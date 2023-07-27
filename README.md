@@ -20,5 +20,6 @@ npm run dev -- --open
 
 ## Result
 
+[![Result video](./static/video-image.png)](./static/video.webm)
 ![Result image](./static/result-image.png)
 ![Result image](./static/result.png)
