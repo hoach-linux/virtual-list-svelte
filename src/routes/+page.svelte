@@ -10,6 +10,11 @@
     let h1Height: number = 39;
     let h1Margin: number = 40;
 
+    function addListItems(quantity: number) {
+        for (let i = 0; i <= quantity; i++) {
+            list.push(i);
+        }
+    }
     function renderItems() {
         let maxItems = Math.round(
             (window.innerHeight - (h1Height + h1Margin)) /
@@ -26,10 +31,7 @@
     }
 
     onMount(() => {
-        for (let i = 0; i <= 9999; i++) {
-            list.push(i);
-        }
-
+        addListItems(9999);
         renderItems();
 
         listHeight = (itemHeight + itemMargin) * list.length;
