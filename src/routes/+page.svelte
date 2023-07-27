@@ -1,21 +1,28 @@
 <script lang="ts">
     import { onDestroy, onMount } from "svelte";
 
-    let list: any[] = [];
-    let showList: any[] = [];
+    let list: number[] = [];
+    let showList: number[] = [];
     let itemHeight: number = 50;
     let itemMargin: number = 10;
     let listHeight: number = 0;
     let marginTop: number = 0;
     let h1Height: number = 39;
     let h1Margin: number = 40;
+    let renderList = () =>
+        renderItems(h1Height, h1Margin, itemHeight, itemMargin);
 
     function addListItems(quantity: number) {
         for (let i = 0; i <= quantity; i++) {
             list.push(i);
         }
     }
-    function renderItems() {
+    function renderItems(
+        h1Height: number,
+        h1Margin: number,
+        itemHeight: number,
+        itemMargin: number
+    ) {
         let maxItems = Math.round(
             (window.innerHeight - (h1Height + h1Margin)) /
                 (itemHeight + itemMargin) +
@@ -32,17 +39,17 @@
 
     onMount(() => {
         addListItems(9999);
-        renderItems();
+        renderList();
 
         listHeight = (itemHeight + itemMargin) * list.length;
 
         if (typeof window !== "undefined") {
-            window.addEventListener("scroll", renderItems);
+            window.addEventListener("scroll", renderList);
         }
     });
     onDestroy(() => {
         if (typeof window !== "undefined") {
-            window.removeEventListener("scroll", renderItems);
+            window.removeEventListener("scroll", renderList);
         }
     });
 </script>
