@@ -20,4 +20,5 @@ npm run dev -- --open
 
 ## Result
 
+![Result image](./static/result-image.png)
 ![Result image](./static/result.png)
