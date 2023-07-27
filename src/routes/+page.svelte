@@ -4,7 +4,6 @@
     let list: any[] = [];
     let showList: any[] = [];
     let itemHeight: number = 50;
-    let listItem: HTMLElement;
     let listHeight: number = 0;
     let marginTop: number = 0;
 
@@ -45,10 +44,10 @@
     <h1 style="text-align: center; margin-bottom: 100px">Virtual list</h1>
     <div
         class="virtual-list"
-        style="height: {listHeight - marginTop + itemHeight + itemHeight}px; margin-top: {marginTop -
-            itemHeight -
-            10}px"
-        bind:this={listItem}
+        style="height: {listHeight -
+            marginTop +
+            itemHeight +
+            itemHeight}px; margin-top: {marginTop - itemHeight - 10}px"
     >
         {#each showList as listItem, i}
             <div
